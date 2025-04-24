@@ -73,7 +73,7 @@
           </view>
           <view class="follow-item">
             <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
-            <text class="follow-label">微信号：{{companyInfo.wechat}}</text>
+            <text class="follow-label">微信号</text>
           </view>
         </view>
       </view>

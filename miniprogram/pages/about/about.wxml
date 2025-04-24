@@ -1,0 +1,10 @@
+<view class="container">
+  <view class="header">
+    <text class="title">{{t('about.title')}}</text>
+    <text class="description">{{t('about.description')}}</text>
+  </view>
+  
+  <navigator url="/pages/index/index" class="back-button">
+    <text>{{t('common.home')}}</text>
+  </navigator>
+</view> 

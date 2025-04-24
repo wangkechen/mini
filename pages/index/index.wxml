@@ -1,0 +1,30 @@
+<view class="container">
+  <!-- 轮播图部分 -->
+  <swiper class="banner" indicator-dots="true" autoplay="true" interval="3000" duration="500">
+    <swiper-item>
+      <image src="/images/common/example.png" mode="aspectFill"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/common/example.png" mode="aspectFill"></image>
+    </swiper-item>
+    <swiper-item>
+      <image src="/images/common/example.png" mode="aspectFill"></image>
+    </swiper-item>
+  </swiper>
+
+  <!-- 新闻列表部分 -->
+  <view class="news-section">
+    <view class="section-title">最新动态</view>
+    <view class="news-list">
+      <view class="news-item" wx:for="{{newsList}}" wx:key="id">
+        <image class="news-image" src="/images/common/example.png" mode="aspectFill"></image>
+        <view class="news-content">
+          <text class="news-title">{{item.title}}</text>
+          <text class="news-desc">{{item.description}}</text>
+          <text class="news-time">{{item.time}}</text>
+        </view>
+      </view>
+    </view>
+  </view>
+
+</view>

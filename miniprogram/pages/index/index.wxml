@@ -1,0 +1,31 @@
+<view class="container">
+  <!-- 轮播图 -->
+  <swiper class="banner" indicator-dots="{{true}}" autoplay="{{true}}" interval="{{3000}}" duration="{{500}}">
+    <swiper-item wx:for="{{banners}}" wx:key="id">
+      <image src="{{item.imageUrl}}" mode="aspectFill" class="banner-image" />
+    </swiper-item>
+  </swiper>
+
+  <!-- 语言切换 -->
+  <view class="language-switch">
+    <text>{{t('common.switchLanguage')}}</text>
+    <switch checked="{{currentLang === 'zh'}}" bindchange="onLanguageChange" />
+  </view>
+
+  <!-- 新闻列表 -->
+  <view class="news-list">
+    <view class="news-item" wx:for="{{newsList}}" wx:key="id" bindtap="onNewsTap" data-id="{{item.id}}">
+      <image class="news-image" src="{{item.imageUrl}}" mode="aspectFill" />
+      <view class="news-content">
+        <text class="news-title">{{item.title}}</text>
+        <text class="news-desc">{{item.description}}</text>
+        <text class="news-time">{{item.time}}</text>
+      </view>
+    </view>
+  </view>
+
+  <!-- 关于我们按钮 -->
+  <navigator url="/pages/about/about" class="nav-button">
+    <text>{{t('common.about')}}</text>
+  </navigator>
+</view> 

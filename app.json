@@ -1,0 +1,57 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/aa/aa",
+    "pages/bb/bb",
+    "pages/cc/cc",
+    "pages/about/about"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "我的小程序",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "color": "#999999",
+    "selectedColor": "#07c160",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "black",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "首页",
+        "iconPath": "images/common/example.png",
+        "selectedIconPath": "images/common/example.png"
+      },
+      {
+        "pagePath": "pages/aa/aa",
+        "text": "AA",
+        "iconPath": "images/common/example.png",
+        "selectedIconPath": "images/common/example.png"
+      },
+      {
+        "pagePath": "pages/bb/bb",
+        "text": "BB",
+        "iconPath": "images/common/example.png",
+        "selectedIconPath": "images/common/example.png"
+      },
+      {
+        "pagePath": "pages/cc/cc",
+        "text": "CC",
+        "iconPath": "images/common/example.png",
+        "selectedIconPath": "images/common/example.png"
+      },
+      {
+        "pagePath": "pages/about/about",
+        "text": "关于我们",
+        "iconPath": "images/common/example.png",
+        "selectedIconPath": "images/common/example.png"
+      }
+    ]
+  },
+  "style": "v2",
+  "componentFramework": "glass-easel",
+  "sitemapLocation": "sitemap.json",
+  "lazyCodeLoading": "requiredComponents"
+}

@@ -1,0 +1,9 @@
+<view class="container">
+  <view class="header">
+    <text class="title">CC页面</text>
+  </view>
+  
+  <view class="content">
+    <text class="description">这是CC页面的内容</text>
+  </view>
+</view> 

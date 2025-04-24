@@ -1,0 +1,82 @@
+<view class="page">
+  <!-- 顶部背景 -->
+  <view class="header">
+    <image class="header-bg" src="/images/common/example.png" mode="aspectFill"></image>
+    <view class="header-content">
+      <text class="company-name">企业名称</text>
+      <text class="slogan">科技创新 • 引领未来</text>
+    </view>
+  </view>
+
+  <!-- 内容区域 -->
+  <view class="content">
+    <!-- 公司简介 -->
+    <view class="block">
+      <view class="block-title">
+        <text class="title-text">公司简介</text>
+      </view>
+      <view class="block-content">
+        <text class="intro">我们是一家专注于技术创新的企业，致力于为客户提供最优质的产品和服务。公司成立于2010年，经过多年发展，已成为行业内的领军企业。</text>
+      </view>
+    </view>
+
+    <!-- 联系方式 -->
+    <view class="block">
+      <view class="block-title">
+        <text class="title-text">联系方式</text>
+      </view>
+      <view class="block-content">
+        <view class="contact-list">
+          <view class="contact-item" bindtap="makePhoneCall">
+            <view class="icon-wrap">
+              <image class="icon" src="/images/common/example.png"></image>
+            </view>
+            <view class="info">
+              <text class="label">电话咨询</text>
+              <text class="value">{{companyInfo.phone}}</text>
+            </view>
+          </view>
+
+          <view class="contact-item" bindtap="copyText" data-text="{{companyInfo.email}}">
+            <view class="icon-wrap">
+              <image class="icon" src="/images/common/example.png"></image>
+            </view>
+            <view class="info">
+              <text class="label">邮箱</text>
+              <text class="value">{{companyInfo.email}}</text>
+            </view>
+          </view>
+
+          <view class="contact-item" bindtap="viewLocation">
+            <view class="icon-wrap">
+              <image class="icon" src="/images/common/example.png"></image>
+            </view>
+            <view class="info">
+              <text class="label">公司地址</text>
+              <text class="value">{{companyInfo.address}}</text>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+    <!-- 关注我们 -->
+    <view class="block">
+      <view class="block-title">
+        <text class="title-text">关注我们</text>
+      </view>
+      <view class="block-content">
+        <view class="follow-section">
+          <view class="follow-item">
+            <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
+            <text class="follow-label">微信公众号</text>
+          </view>
+          <view class="follow-item">
+            <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
+            <text class="follow-label">微信号：{{companyInfo.wechat}}</text>
+          </view>
+        </view>
+      </view>
+    </view>
+  </view>
+</view> 

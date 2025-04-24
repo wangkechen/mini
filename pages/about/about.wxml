@@ -3,8 +3,8 @@
   <view class="header">
     <image class="header-bg" src="/images/common/example.png" mode="aspectFill"></image>
     <view class="header-content">
-      <text class="company-name">企业名称</text>
-      <text class="slogan">科技创新 • 引领未来</text>
+      <text class="company-name">{{currentLang === 'zh' ? '企业名称' : 'Company Name'}}</text>
+      <text class="slogan">{{currentLang === 'zh' ? '科技创新 • 引领未来' : 'Technology Innovation • Leading the Future'}}</text>
     </view>
   </view>
 
@@ -13,17 +13,17 @@
     <!-- 公司简介 -->
     <view class="block">
       <view class="block-title">
-        <text class="title-text">公司简介</text>
+        <text class="title-text">{{currentLang === 'zh' ? '公司简介' : 'Company Profile'}}</text>
       </view>
       <view class="block-content">
-        <text class="intro">我们是一家专注于技术创新的企业，致力于为客户提供最优质的产品和服务。公司成立于2010年，经过多年发展，已成为行业内的领军企业。</text>
+        <text class="intro">{{currentLang === 'zh' ? '我们是一家专注于技术创新的企业，致力于为客户提供最优质的产品和服务。公司成立于2010年，经过多年发展，已成为行业内的领军企业。' : 'We are a company focused on technological innovation, committed to providing customers with the highest quality products and services. Founded in 2010, after years of development, we have become a leading enterprise in the industry.'}}</text>
       </view>
     </view>
 
     <!-- 联系方式 -->
     <view class="block">
       <view class="block-title">
-        <text class="title-text">联系方式</text>
+        <text class="title-text">{{currentLang === 'zh' ? '联系方式' : 'Contact Us'}}</text>
       </view>
       <view class="block-content">
         <view class="contact-list">
@@ -32,7 +32,7 @@
               <image class="icon" src="/images/common/example.png"></image>
             </view>
             <view class="info">
-              <text class="label">电话咨询</text>
+              <text class="label">{{currentLang === 'zh' ? '电话咨询' : 'Phone'}}</text>
               <text class="value">{{companyInfo.phone}}</text>
             </view>
           </view>
@@ -42,7 +42,7 @@
               <image class="icon" src="/images/common/example.png"></image>
             </view>
             <view class="info">
-              <text class="label">邮箱</text>
+              <text class="label">{{currentLang === 'zh' ? '邮箱' : 'Email'}}</text>
               <text class="value">{{companyInfo.email}}</text>
             </view>
           </view>
@@ -52,7 +52,7 @@
               <image class="icon" src="/images/common/example.png"></image>
             </view>
             <view class="info">
-              <text class="label">公司地址</text>
+              <text class="label">{{currentLang === 'zh' ? '公司地址' : 'Address'}}</text>
               <text class="value">{{companyInfo.address}}</text>
             </view>
           </view>
@@ -63,17 +63,17 @@
     <!-- 关注我们 -->
     <view class="block">
       <view class="block-title">
-        <text class="title-text">关注我们</text>
+        <text class="title-text">{{currentLang === 'zh' ? '关注我们' : 'Follow Us'}}</text>
       </view>
       <view class="block-content">
         <view class="follow-section">
           <view class="follow-item">
               <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
-              <text class="follow-label">微信号</text>
+              <text class="follow-label">{{currentLang === 'zh' ? '微信号' : 'WeChat'}}</text>
             </view>
           <view class="follow-item">
             <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
-            <text class="follow-label">微信公众号</text>
+            <text class="follow-label">{{currentLang === 'zh' ? '微信公众号' : 'Official Account'}}</text>
           </view>
         </view>
       </view>

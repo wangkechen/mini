@@ -23,13 +23,50 @@ Page({
     return i18nT(key, this.data.currentLang)
   },
 
+  onLoad: function() {
+    // 获取全局语言设置
+    const savedLang = wx.getStorageSync('currentLang')
+    this.setData({
+      currentLang: savedLang || app.globalData.currentLang || 'zh'
+    })
+    this.updateNewsList()
+  },
+
+  onShow: function() {
+    // 每次页面显示时检查语言设置
+    const savedLang = wx.getStorageSync('currentLang')
+    const currentLang = savedLang || app.globalData.currentLang || 'zh'
+    if (currentLang !== this.data.currentLang) {
+      this.setData({
+        currentLang: currentLang
+      })
+      this.updateNewsList()
+    }
+  },
+
   // 语言切换方法
   switchLanguage: function() {
     const newLang = this.data.currentLang === 'zh' ? 'en' : 'zh'
+    // 更新全局状态
+    const app = getApp()
+    app.globalData.currentLang = newLang
+    wx.setStorageSync('currentLang', newLang)
+    
+    // 更新当前页面
     this.setData({
       currentLang: newLang
     })
     this.updateNewsList()
+
+    // 获取所有页面实例并更新
+    const pages = getCurrentPages()
+    pages.forEach(page => {
+      if (page && page !== this && page.setData) {
+        page.setData({
+          currentLang: newLang
+        })
+      }
+    })
   },
 
   // 更新新闻列表
@@ -99,12 +136,4 @@ Page({
       }
     })
   },
-
-  onLoad: function() {
-    this.updateNewsList()
-  },
-
-  onShow: function() {
-    // 页面显示时的逻辑
-  }
 })

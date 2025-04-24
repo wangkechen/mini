@@ -1,6 +1,7 @@
 Page({
   data: {
     // 页面的初始数据
+    currentLang: 'zh',
     companyInfo: {
       phone: '400-123-4567',
       email: 'contact@company.com',
@@ -11,6 +12,24 @@ Page({
 
   onLoad: function() {
     // 页面加载时执行
+    // 获取全局语言设置
+    const app = getApp()
+    const savedLang = wx.getStorageSync('currentLang')
+    this.setData({
+      currentLang: savedLang || app.globalData.currentLang || 'zh'
+    })
+  },
+
+  onShow: function() {
+    // 每次页面显示时检查语言设置
+    const app = getApp()
+    const savedLang = wx.getStorageSync('currentLang')
+    const currentLang = savedLang || app.globalData.currentLang || 'zh'
+    if (currentLang !== this.data.currentLang) {
+      this.setData({
+        currentLang: currentLang
+      })
+    }
   },
 
   // 拨打电话
@@ -28,9 +47,9 @@ Page({
     const text = e.currentTarget.dataset.text
     wx.setClipboardData({
       data: text,
-      success: function() {
+      success: () => {
         wx.showToast({
-          title: '复制成功',
+          title: this.data.currentLang === 'zh' ? '复制成功' : 'Copied',
           icon: 'success',
           duration: 2000
         })
@@ -42,7 +61,7 @@ Page({
   viewLocation: function() {
     // 这里可以添加导航或地图查看功能
     wx.showToast({
-      title: '正在开发中',
+      title: this.data.currentLang === 'zh' ? '正在开发中' : 'Under Development',
       icon: 'none'
     })
   },

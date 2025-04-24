@@ -1,5 +1,8 @@
 // index.js
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
+const { t: i18nT } = require('../../utils/i18n')
+
+const app = getApp()
 
 Page({
   data: {
@@ -11,35 +14,60 @@ Page({
     hasUserInfo: false,
     canIUseGetUserProfile: wx.canIUse('getUserProfile'),
     canIUseNicknameComp: wx.canIUse('input.type.nickname'),
-    newsList: [
-      {
-        id: 1,
-        title: '公司荣获2023年度最佳创新企业奖',
-        description: '近日，我公司凭借在技术创新领域的突出贡献，荣获2023年度最佳创新企业奖...',
-        image: '/images/common/example.png',
-        time: '2023-12-20'
-      },
-      {
-        id: 2,
-        title: '新产品发布会圆满举行',
-        description: '我公司最新研发的智能产品系列在发布会上获得广泛关注，展示了多项创新技术...',
-        image: '/images/common/example.png',
-        time: '2023-12-15'
-      },
-      {
-        id: 3,
-        title: '公司与某知名企业达成战略合作',
-        description: '我公司近日与某知名企业签署战略合作协议，将在多个领域展开深度合作...',
-        image: '/images/common/example.png',
-        time: '2023-12-10'
-      }
-    ]
+    currentLang: 'zh',
+    newsList: []
   },
+
+  // 将 t 函数作为页面方法
+  t: function(key) {
+    return i18nT(key, this.data.currentLang)
+  },
+
+  // 语言切换方法
+  switchLanguage: function() {
+    const newLang = this.data.currentLang === 'zh' ? 'en' : 'zh'
+    this.setData({
+      currentLang: newLang
+    })
+    this.updateNewsList()
+  },
+
+  // 更新新闻列表
+  updateNewsList: function() {
+    const lang = this.data.currentLang
+    this.setData({
+      newsList: [
+        {
+          id: 1,
+          title: i18nT('news.award', lang),
+          description: i18nT('news.awardDesc', lang),
+          image: '/images/common/example.png',
+          time: '2023-12-20'
+        },
+        {
+          id: 2,
+          title: i18nT('news.launch', lang),
+          description: i18nT('news.launchDesc', lang),
+          image: '/images/common/example.png',
+          time: '2023-12-15'
+        },
+        {
+          id: 3,
+          title: i18nT('news.cooperation', lang),
+          description: i18nT('news.cooperationDesc', lang),
+          image: '/images/common/example.png',
+          time: '2023-12-10'
+        }
+      ]
+    })
+  },
+
   bindViewTap() {
     wx.navigateTo({
       url: '../logs/logs'
     })
   },
+
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail
     const { nickName } = this.data.userInfo
@@ -48,6 +76,7 @@ Page({
       hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
     })
   },
+
   onInputChange(e) {
     const nickName = e.detail.value
     const { avatarUrl } = this.data.userInfo
@@ -56,6 +85,7 @@ Page({
       hasUserInfo: nickName && avatarUrl && avatarUrl !== defaultAvatarUrl,
     })
   },
+
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
     wx.getUserProfile({
@@ -69,9 +99,11 @@ Page({
       }
     })
   },
+
   onLoad: function() {
-    // 页面加载时的逻辑
+    this.updateNewsList()
   },
+
   onShow: function() {
     // 页面显示时的逻辑
   }

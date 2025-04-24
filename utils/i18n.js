@@ -22,7 +22,6 @@ const i18n = {
       wechat: '微信号',
       officialAccount: '微信公众号',
       copySuccess: '复制成功',
-      underDevelopment: '正在开发中'
     }
   },
   en: {
@@ -48,7 +47,6 @@ const i18n = {
       wechat: 'WeChat',
       officialAccount: 'Official Account',
       copySuccess: 'Copied',
-      underDevelopment: 'Under Development'
     }
   }
 }

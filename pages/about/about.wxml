@@ -47,7 +47,7 @@
             </view>
           </view>
 
-          <view class="contact-item" bindtap="viewLocation">
+          <view class="contact-item" bindtap="copyText" data-text="{{companyInfo.address}}">
             <view class="icon-wrap">
               <image class="icon" src="/images/common/example.png"></image>
             </view>

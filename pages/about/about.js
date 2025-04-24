@@ -42,7 +42,7 @@ Page({
     })
   },
 
-  // 复制文本（邮箱、微信号等）
+  // 复制文本（邮箱、公司地址等）
   copyText: function(e) {
     const text = e.currentTarget.dataset.text
     wx.setClipboardData({
@@ -54,15 +54,6 @@ Page({
           duration: 2000
         })
       }
-    })
-  },
-
-  // 查看位置
-  viewLocation: function() {
-    // 这里可以添加导航或地图查看功能
-    wx.showToast({
-      title: this.data.currentLang === 'zh' ? '正在开发中' : 'Under Development',
-      icon: 'none'
     })
   },
 

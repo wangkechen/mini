@@ -68,12 +68,12 @@
       <view class="block-content">
         <view class="follow-section">
           <view class="follow-item">
-            <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
-            <text class="follow-label">微信公众号</text>
-          </view>
+              <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
+              <text class="follow-label">微信号</text>
+            </view>
           <view class="follow-item">
             <image class="qrcode" src="/images/common/example.png" mode="aspectFit" bindtap="previewQRCode"></image>
-            <text class="follow-label">微信号</text>
+            <text class="follow-label">微信公众号</text>
           </view>
         </view>
       </view>

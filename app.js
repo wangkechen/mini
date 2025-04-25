@@ -54,7 +54,7 @@ App({
       'pages/aa/aa': lang === 'zh' ? 'AA' : 'AA',
       'pages/bb/bb': lang === 'zh' ? 'BB' : 'BB',
       'pages/cc/cc': lang === 'zh' ? 'CC' : 'CC',
-      'pages/about/about': lang === 'zh' ? '关于我们' : 'About'
+      'pages/about/about': lang === 'zh' ? '关于我们' : 'About us'
     }
     
     // 确保 tabBar 已经创建

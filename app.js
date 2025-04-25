@@ -1,4 +1,6 @@
 // app.js
+const { i18n, t } = require('./utils/i18n')
+
 App({
   globalData: {
     currentLang: 'zh'
@@ -16,7 +18,7 @@ App({
       }
     })
 
-    // 初始化语言设置
+    // 获取存储的语言设置
     const savedLang = wx.getStorageSync('currentLang')
     if (savedLang) {
       this.globalData.currentLang = savedLang

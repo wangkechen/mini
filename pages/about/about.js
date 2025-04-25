@@ -1,3 +1,5 @@
+const { i18n, t } = require('../../utils/i18n')
+
 Page({
   data: {
     // 页面的初始数据
@@ -18,6 +20,8 @@ Page({
     this.setData({
       currentLang: savedLang || app.globalData.currentLang || 'zh'
     })
+    // 设置导航栏标题
+    this.setNavigationBarTitle()
   },
 
   onShow: function() {
@@ -29,7 +33,17 @@ Page({
       this.setData({
         currentLang: currentLang
       })
+      // 更新导航栏标题
+      this.setNavigationBarTitle()
     }
+  },
+
+  // 设置导航栏标题
+  setNavigationBarTitle: function() {
+    const title = this.data.currentLang === 'zh' ? '关于我们' : 'About Us'
+    wx.setNavigationBarTitle({
+      title: title
+    })
   },
 
   // 拨打电话

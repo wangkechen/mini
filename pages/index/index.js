@@ -95,6 +95,45 @@ Page({
     })
   },
 
+  navigateToAA() {
+    console.log('Navigating to AA page')
+    wx.switchTab({
+      url: '/pages/aa/aa',
+      success: function() {
+        console.log('Navigation to AA successful')
+      },
+      fail: function(error) {
+        console.error('Navigation to AA failed:', error)
+      }
+    })
+  },
+
+  navigateToBB() {
+    console.log('Navigating to BB page')
+    wx.switchTab({
+      url: '/pages/bb/bb',
+      success: function() {
+        console.log('Navigation to BB successful')
+      },
+      fail: function(error) {
+        console.error('Navigation to BB failed:', error)
+      }
+    })
+  },
+
+  navigateToCC() {
+    console.log('Navigating to CC page')
+    wx.switchTab({
+      url: '/pages/cc/cc',
+      success: function() {
+        console.log('Navigation to CC successful')
+      },
+      fail: function(error) {
+        console.error('Navigation to CC failed:', error)
+      }
+    })
+  },
+
   onChooseAvatar(e) {
     const { avatarUrl } = e.detail
     const { nickName } = this.data.userInfo

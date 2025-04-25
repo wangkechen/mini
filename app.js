@@ -5,24 +5,14 @@ App({
   globalData: {
     currentLang: 'zh'
   },
-  onLaunch() {
-    // 展示本地存储能力
-    const logs = wx.getStorageSync('logs') || []
-    logs.unshift(Date.now())
-    wx.setStorageSync('logs', logs)
-
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-      }
-    })
-
+  onLaunch: function() {
     // 获取存储的语言设置
     const savedLang = wx.getStorageSync('currentLang')
     if (savedLang) {
       this.globalData.currentLang = savedLang
     }
+    // 设置 tabBar 文字
+    this.setTabBarText()
   },
   
   // 切换语言
@@ -40,5 +30,38 @@ App({
         })
       }
     })
+    // 更新 tabBar 文字
+    this.setTabBarText()
+  },
+
+  // 设置 tabBar 文字
+  setTabBarText: function() {
+    const lang = this.globalData.currentLang
+    const tabBarText = {
+      'pages/index/index': lang === 'zh' ? '首页' : 'Home',
+      'pages/aa/aa': lang === 'zh' ? 'AA' : 'AA',
+      'pages/bb/bb': lang === 'zh' ? 'BB' : 'BB',
+      'pages/cc/cc': lang === 'zh' ? 'CC' : 'CC',
+      'pages/about/about': lang === 'zh' ? '关于我们' : 'About'
+    }
+    
+    Object.keys(tabBarText).forEach(pagePath => {
+      wx.setTabBarItem({
+        index: this.getTabBarIndex(pagePath),
+        text: tabBarText[pagePath]
+      })
+    })
+  },
+
+  // 获取 tabBar 索引
+  getTabBarIndex: function(pagePath) {
+    const tabBarList = [
+      'pages/index/index',
+      'pages/aa/aa',
+      'pages/bb/bb',
+      'pages/cc/cc',
+      'pages/about/about'
+    ]
+    return tabBarList.indexOf(pagePath)
   }
 })

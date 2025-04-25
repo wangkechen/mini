@@ -20,31 +20,26 @@
     "list": [
       {
         "pagePath": "pages/index/index",
-        "text": "首页",
         "iconPath": "images/common/example.png",
         "selectedIconPath": "images/common/example.png"
       },
       {
         "pagePath": "pages/aa/aa",
-        "text": "AA",
         "iconPath": "images/common/example.png",
         "selectedIconPath": "images/common/example.png"
       },
       {
         "pagePath": "pages/bb/bb",
-        "text": "BB",
         "iconPath": "images/common/example.png",
         "selectedIconPath": "images/common/example.png"
       },
       {
         "pagePath": "pages/cc/cc",
-        "text": "CC",
         "iconPath": "images/common/example.png",
         "selectedIconPath": "images/common/example.png"
       },
       {
         "pagePath": "pages/about/about",
-        "text": "关于我们",
         "iconPath": "images/common/example.png",
         "selectedIconPath": "images/common/example.png"
       }

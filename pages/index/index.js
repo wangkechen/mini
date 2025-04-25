@@ -1,6 +1,6 @@
 // index.js
 const defaultAvatarUrl = 'https://mmbiz.qpic.cn/mmbiz/icTdbqWNOwNRna42FI242Lcia07jQodd2FJGIYQfG0LAJGFxM4FbnQP6yfMxBgJ0F3YRqJCJ1aPAK2dQagdusBZg/0'
-const { t: i18nT } = require('../../utils/i18n')
+const { t } = require('../../utils/i18n')
 
 const app = getApp()
 
@@ -20,7 +20,7 @@ Page({
 
   // 将 t 函数作为页面方法
   t: function(key) {
-    return i18nT(key, this.data.currentLang)
+    return t(key, this.data.currentLang)
   },
 
   onLoad: function() {
@@ -29,74 +29,64 @@ Page({
     this.setData({
       currentLang: savedLang || app.globalData.currentLang || 'zh'
     })
+    this.setNavigationBarTitle()
     this.updateNewsList()
+    // 标记 tabBar 已创建
+    app.onTabBarCreated()
   },
 
   onShow: function() {
     // 每次页面显示时检查语言设置
-    const savedLang = wx.getStorageSync('currentLang')
-    const currentLang = savedLang || app.globalData.currentLang || 'zh'
+    const currentLang = app.globalData.currentLang
     if (currentLang !== this.data.currentLang) {
       this.setData({
         currentLang: currentLang
       })
+      this.setNavigationBarTitle()
       this.updateNewsList()
     }
   },
 
+  // 设置导航栏标题
+  setNavigationBarTitle: function() {
+    const title = this.data.currentLang === 'zh' ? '首页' : 'Home'
+    wx.setNavigationBarTitle({
+      title: title
+    })
+  },
+
   // 语言切换方法
   switchLanguage: function() {
-    const newLang = this.data.currentLang === 'zh' ? 'en' : 'zh'
-    // 更新全局状态
-    const app = getApp()
-    app.globalData.currentLang = newLang
-    wx.setStorageSync('currentLang', newLang)
-    
-    // 更新当前页面
-    this.setData({
-      currentLang: newLang
-    })
-    this.updateNewsList()
-
-    // 获取所有页面实例并更新
-    const pages = getCurrentPages()
-    pages.forEach(page => {
-      if (page && page !== this && page.setData) {
-        page.setData({
-          currentLang: newLang
-        })
-      }
-    })
+    app.switchLanguage()
   },
 
   // 更新新闻列表
   updateNewsList: function() {
     const lang = this.data.currentLang
-    this.setData({
-      newsList: [
-        {
-          id: 1,
-          title: i18nT('news.award', lang),
-          description: i18nT('news.awardDesc', lang),
-          image: '/images/common/example.png',
-          time: '2023-12-20'
-        },
-        {
-          id: 2,
-          title: i18nT('news.launch', lang),
-          description: i18nT('news.launchDesc', lang),
-          image: '/images/common/example.png',
-          time: '2023-12-15'
-        },
-        {
-          id: 3,
-          title: i18nT('news.cooperation', lang),
-          description: i18nT('news.cooperationDesc', lang),
-          image: '/images/common/example.png',
-          time: '2023-12-10'
-        }
-      ]
-    })
+    const newsList = [
+      {
+        id: 1,
+        title: t('news.award', lang),
+        description: t('news.awardDesc', lang),
+        image: '/images/common/example.png',
+        time: '2023-12-20'
+      },
+      {
+        id: 2,
+        title: t('news.launch', lang),
+        description: t('news.launchDesc', lang),
+        image: '/images/common/example.png',
+        time: '2023-12-15'
+      },
+      {
+        id: 3,
+        title: t('news.cooperation', lang),
+        description: t('news.cooperationDesc', lang),
+        image: '/images/common/example.png',
+        time: '2023-12-10'
+      }
+    ]
+    this.setData({ newsList })
   },
 
   bindViewTap() {

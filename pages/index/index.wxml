@@ -1,7 +1,7 @@
 <view class="container">
   <!-- 语言切换按钮 -->
   <view class="language-switch" bindtap="switchLanguage">
-    {{currentLang === 'zh' ? 'English' : '中文'}}
+    {{currentLang === 'zh' ? 'EN' : '中文'}}
   </view>
 
   <!-- 轮播图部分 -->
